@@ -12,9 +12,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
 
     if (developmentChains.includes(network.name)) {
         // Find ETH/USD price feed
-        log("start")
         const EthUsdAggregator = await deployments.get("MockV3Aggregator")
-        log("end")
         ethUsdPriceFeedAddress = EthUsdAggregator.address
     } else {
         ethUsdPriceFeedAddress = networkConfig[chainId].ethUsdPriceFeed
